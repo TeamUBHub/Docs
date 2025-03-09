@@ -123,8 +123,15 @@ local Dropdown = Tab1:AddDropdown({
   Default = "two",
   Flag = "dropdown",
   Callback = function(Value)
-    
+
   end
 })
 ```
+### Set Dropdown Value
+```lua
+Dropdown:Set(playerNames)
+```
+
+
+
 
