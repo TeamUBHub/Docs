@@ -5,6 +5,10 @@
 local UBhub_Lib = loadstring(game:HttpGet("https://gitlab.com/r_soft/main/-/raw/main/Library/V3.lua"))()
 ```
 
+## Set Version
+```lua
+_G.currentVersion = "Version: 0.0.3 [TESTING]"
+```
 ## Spawn Window
 ```lua
 local Window = UBhub_Lib:MakeWindow({
@@ -58,7 +62,7 @@ local Paragraph = Tab1:AddParagraph({"Paragraph", "This is a Paragraph\nSecond L
         
       end},
       {"Cancel", function()
-        
+
       end}
     }
   })
