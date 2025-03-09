@@ -1,7 +1,12 @@
 # Documentation for Library V3
 
 ## Load Library
+
+
 ```lua
+local exec_name = identifyexecutor()
+local currentPlaceId = game.PlaceId
+local currentPlaceName = game:GetService("MarketplaceService"):GetProductInfo(currentPlaceId).Name
 local UBhub_Lib = loadstring(game:HttpGet("https://gitlab.com/r_soft/main/-/raw/main/Library/V3.lua"))()
 ```
 
