@@ -19,7 +19,7 @@ _G.currentVersion = "Version: 0.0.3 [TESTING]"
 local Window = UBhub_Lib:MakeWindow({
     Name = "UB Hub : " .. currentPlaceName,
     SubTitle = _G.currentVersion,
-    SaveFolder = "UB Hub | Ant War.lua"
+    SaveFolder = UBHub,
   })
 ```
 ## Mini Button
