@@ -1,140 +1,118 @@
-# Documentation for Library V3
+# Documentation for Library V2
 
-## Load Library
+## Load GUI Base
 
 
 ```lua
-local exec_name = identifyexecutor()
-local currentPlaceId = game.PlaceId
-local currentPlaceName = game:GetService("MarketplaceService"):GetProductInfo(currentPlaceId).Name
-local UBhub_Lib = loadstring(game:HttpGet("https://gitlab.com/r_soft/main/-/raw/main/Library/V3.lua"))()
+local Module = loadstring(game:HttpGet("https://gitlab.com/r_soft/main/-/raw/main/ScriptStarter.lua"))()
+local Library = Module.Library
+local SaveManager = Module.SaveManager
+local Window = Module.Window
+local Testers = Module.Testers
+SaveManager:SetLibrary(Library)
+SaveManager:SetFolder("UBHub/Westbound")
 ```
 
 ## Set Version
 ```lua
-_G.currentVersion = "Version: 0.0.3 [TESTING]"
-```
-## Spawn Window
-```lua
-local Window = UBhub_Lib:MakeWindow({
-    Name = "UB Hub : " .. currentPlaceName,
-    SubTitle = _G.currentVersion,
-    SaveFolder = UBHub,
-  })
-```
-## Mini Button
-```lua
-Window:AddMinimizeButton({
-    Button = { Image = "rbxassetid://94513440833543", BackgroundTransparency = 0 },
-    Corner = { CornerRadius = UDim.new(35, 1) },
-})
-```
-
-## Discord Invite
-```lua
-Home:AddDiscordInvite({
-    Name = "UB Hub",
-    Description = "Click here to join our discord. Can open Discord automatically if executor has requests function.",
-    Logo = "rbxassetid://94513440833543",
-    Invite = "https://discord.gg/pn8xyhuSeV",
-})
+_G.currentVersion = "Version : 2.0.0"
 ```
 
 ## Tab
 ```lua
-local Home = Window:MakeTab({"Home", "scanface"})
+local Tabs = {
+    Home = Window:AddTab({ Title = "Home", Icon = "scan-face"}),
+    Main = Window:AddTab({ Title = "Main", Icon = "layout-grid"}),
+}
 ```
 
 ## Section
 ```lua
-local Section = Tab1:AddSection({"Section"})
+local LPsection = Tabs.Home:AddSection("LocalPlayer")
 ```
 
 ## Paragraph
 ```lua
-local Paragraph = Tab1:AddParagraph({"Paragraph", "This is a Paragraph\nSecond Line"})
+Tab:AddParagraph({
+    Title = "Paragraph",
+    Content = "This is a paragraph.\nSecond line!"
+})
 ```
 ## Dialog
 ```lua
-  local Dialog = Window:Dialog({
-    Title = "Dialog",
-    Text = "This is a Dialog",
-    Options = {
-      {"Confirm", function()
-        
-      end},
-      {"Maybe", function()
-        
-      end},
-      {"Cancel", function()
-
-      end}
+Window:Dialog({
+    Title = "Title",
+    Content = "This is a dialog",
+    Buttons = {
+        { 
+            Title = "Confirm",
+            Callback = function()
+                print("Confirmed the dialog.")
+            end 
+        }, {
+            Title = "Cancel",
+            Callback = function()
+                print("Cancelled the dialog.")
+            end 
+        }
     }
-  })
+})
 ```
 ## Button
 ```lua
-Tab1:AddButton({"Print", function(Value)
-print("Hello World!")
-end})
-```
-## Toggle A
-```lua
-local Toggle1 = Tab1:AddToggle({
-  Name = "Toggle",
-  Description = "Example toggle A",
-  Default = false 
-})
-Toggle1:Callback(function(Value)
- 
-end)
-```
-
-
-
-## Toggle B
-```lua
-Tab1:AddToggle({
-    Name = "Toggle",
-    Default = false,
-    Callback = function(value)
-
+Tab:AddButton({
+    Title = "Button",
+    Description = "Very important button",
+    Callback = function()
+        print("Hello, world!")
     end
 })
 ```
-
-
-
+## Toggle A
+```lua
+local Toggle = Tab:AddToggle("MyToggle", 
+{
+    Title = "Toggle", 
+    Description = "Toggle description",
+    Default = false
+    Callback = function(state)
+	if state then
+	    print("Toggle On")
+	else
+	    print("Toggle Off")
+        end
+    end 
+})
+```
 ## Sliders
 ```lua
-Tab1:AddSlider({
-  Name = "Speed",
-  Min = 1,
-  Max = 100,
-  Increase = 1,
-  Default = 16,
-  Callback = function(Value)
-  
-  end
+local Slider = Tab:AddSlider("Slider", 
+{
+    Title = "Slider",
+    Description = "This is a slider",
+    Default = 2,
+    Min = 0,
+    Max = 5,
+    Rounding = 1,
+    Callback = function(Value)
+        print("Slider was changed:", Value)
+    end
 })
 ```
 
 ## Dropdown
 ```lua
-local Dropdown = Tab1:AddDropdown({
-  Name = "Players List",
-  Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
-  Options = {"one", "two", "three"},
-  Default = "two",
-  Flag = "dropdown",
-  Callback = function(Value)
-
-  end
+local Dropdown = Tab:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+    Description = "Dropdown description",
+    Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+    Multi = false,
+    Default = 1,
 })
 ```
 ### Set Dropdown Value
 ```lua
-Dropdown:Set(playerNames)
+Dropdown:SetValues(playerNames)
 ```
 
 
