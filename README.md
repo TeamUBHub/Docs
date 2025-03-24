@@ -9,6 +9,7 @@ local Library = Module.Library
 local SaveManager = Module.SaveManager
 local Window = Module.Window
 local Testers = Module.Testers
+local UBLink = Module.UBLink
 SaveManager:SetLibrary(Library)
 SaveManager:SetFolder("UBHub/Westbound")
 ```
@@ -113,6 +114,11 @@ local Dropdown = Tab:AddDropdown("Dropdown", {
 ### Set Dropdown Value
 ```lua
 Dropdown:SetValues(playerNames)
+```
+
+### put in end (saveMnager)
+```lua
+SaveManager:LoadAutoloadConfig()
 ```
 
 
