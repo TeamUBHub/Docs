@@ -8,8 +8,6 @@ local Module = loadstring(game:HttpGet("https://gitlab.com/r_soft/main/-/raw/mai
 local Library = Module.Library
 local SaveManager = Module.SaveManager
 local Window = Module.Window
-local Testers = Module.Testers
-local UBLink = Module.UBLink
 SaveManager:SetLibrary(Library)
 SaveManager:SetFolder("UBHub/Westbound")
 ```
